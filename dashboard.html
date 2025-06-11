@@ -9,24 +9,30 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #121212;
-      color: #ffffff;
+      background-color: #121212;
+      color: white;
     }
     header {
       background-color: #1f1f1f;
       padding: 20px;
       text-align: center;
-      border-bottom: 2px solid #2a9d8f;
+      position: relative;
     }
     header img {
-      height: 70px;
-      vertical-align: middle;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
     }
     header h1 {
-      display: inline-block;
-      margin-left: 10px;
-      font-size: 24px;
-      color: #2a9d8f;
+      font-size: 28px;
+      color: #00bcd4;
+      margin: 0;
+    }
+    header h2 {
+      font-size: 16px;
+      color: #ffffffaa;
     }
     .grid {
       display: grid;
@@ -37,41 +43,50 @@
     .card {
       background: #1e1e1e;
       padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-      transition: transform 0.2s;
+      border-radius: 15px;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #00000088;
     }
     .card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 0 20px #00bcd4aa;
     }
-    .card h2 {
-      font-size: 18px;
-      color: #f4a261;
+    .card a {
+      text-decoration: none;
+      color: #00e5ff;
+      font-size: 20px;
     }
-    .tagline {
+    footer {
       text-align: center;
-      font-size: 18px;
-      margin-top: 10px;
-      color: #e76f51;
+      padding: 20px;
+      background-color: #1f1f1f;
+      color: #888;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="logo.png" alt="Company Logo" />
-    <h1>M.Hanif & Sons</h1>
-    <div class="tagline">Pakistan</div>
-  </header>
+<header>
+  <img src="logo.png" alt="Company Logo" />
+  <h1>M. Hanif & Sons</h1>
+  <h2>Pakistan</h2>
+</header>
 
-  <div class="grid">
-    <div class="card"><h2>HR Department</h2></div>
-    <div class="card"><h2>Finance</h2></div>
-    <div class="card"><h2>Store</h2></div>
-    <div class="card"><h2>Reception</h2></div>
-    <div class="card"><h2>Admin Panel</h2></div>
-  </div>
+<main class="grid">
+  <div class="card"><a href="hr.html">HR Section</a></div>
+  <div class="card"><a href="finance.html">Finance Section</a></div>
+  <div class="card"><a href="store.html">Store Section</a></div>
+  <div class="card"><a href="reception.html">Reception Section</a></div>
+  <div class="card"><a href="admin.html">Admin Section</a></div>
+</main>
+
+<footer>
+  © 2025 M.Hanif & Sons | All rights reserved.
+</footer>
 
 </body>
 </html>
+
 
