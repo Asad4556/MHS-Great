@@ -9,36 +9,36 @@
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      background-color: #121212;
       color: #fff;
     }
 
     .container {
-      width: 360px;
+      width: 350px;
       margin: 60px auto;
       padding: 30px;
       background: #1e1e1e;
       border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
       text-align: center;
     }
 
     .logo {
       display: block;
       margin: 0 auto;
-      width: 110px;
-      margin-bottom: 10px;
+      width: 120px;
+      margin-bottom: 15px;
     }
 
     .center-title {
-      font-size: 22px;
-      color: #00bcd4;
-      margin-top: 5px;
+      text-align: center;
+      color: #00acee;
+      font-size: 24px;
+      margin-top: 10px;
     }
 
     h2 {
-      margin: 15px 0;
-      color: #ffffff;
+      margin-bottom: 25px;
     }
 
     input[type="text"], input[type="password"] {
@@ -47,27 +47,20 @@
       margin: 10px 0;
       border: none;
       border-radius: 8px;
-      background: #2c3e50;
-      color: #fff;
-    }
-
-    input::placeholder {
-      color: #ccc;
     }
 
     button {
-      background-color: #00bcd4;
+      background-color: #00acee;
       color: white;
       padding: 10px 25px;
       border: none;
       border-radius: 8px;
       margin-top: 15px;
       cursor: pointer;
-      font-weight: bold;
     }
 
     button:hover {
-      background-color: #0097a7;
+      background-color: #007bb5;
     }
   </style>
 </head>
@@ -85,8 +78,8 @@
 
   <script>
     function validateLogin() {
-      const cnic = document.getElementById("cnic").value.trim();
-      const pass = document.getElementById("password").value.trim();
+      const cnic = document.getElementById("cnic").value;
+      const pass = document.getElementById("password").value;
 
       if (cnic === "34501-8971113-7" && pass === "Asad@2723") {
         window.location.href = "dashboard.html";
@@ -99,3 +92,4 @@
   </script>
 </body>
 </html>
+
