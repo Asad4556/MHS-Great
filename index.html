@@ -1,26 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>M.Hanif & Sons - Login</title>
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      width: 360px;
+      position: relative;
+    }
+
+    .header {
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-weight: bold;
+      color: #00ffff;
+    }
+
+    .logo {
+      position: absolute;
+      top: -30px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00ffff;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    input:focus {
+      outline: 2px solid #00ffff;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: #00ffff;
+      color: black;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00cccc;
+    }
+
+    .footer-text {
+      margin-top: 15px;
+      font-size: 12px;
+      text-align: center;
+      opacity: 0.6;
+    }
+  </style>
 </head>
 <body>
-  <div class="login-container">
+  <div class="container">
+    <div class="header">Pakistan</div>
+    <img src="logo.png" class="logo" alt="Company Logo" />
     <h2>M.Hanif & Sons - Login</h2>
-    <form id="loginForm">
+    <form onsubmit="return login(event)">
       <label for="cnic">Enter CNIC:</label>
-      <input type="text" id="cnic" name="cnic" placeholder="e.g. 34501-8971113-7" required>
-
-      <label for="password">Enter Password:</label>
-      <input type="password" id="password" name="password" placeholder="e.g. Asad@2723" required>
-
+      <input type="text" id="cnic" name="cnic" placeholder="e.g. 34501-8971113-7" required />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required />
       <button type="submit">Login</button>
     </form>
-    <p id="loginMessage"></p>
+    <div class="footer-text">© 2025 M.Hanif & Sons</div>
   </div>
 
-  <script src="auth.js"></script>
+  <script>
+    function login(event) {
+      event.preventDefault();
+      const cnic = document.getElementById("cnic").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (cnic === "34501-8971113-7" && password === "Asad@2723") {
+        window.location.href = "dashboard.html"; // Replace with your actual page
+      } else {
+        alert("Invalid CNIC or Password");
+      }
+    }
+  </script>
 </body>
 </html>
-
