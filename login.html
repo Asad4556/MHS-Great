@@ -1,78 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>M.Hanif & Sons - Super Admin Login</title>
+  <meta charset="UTF-8">
+  <title>M.Hanif & Sons - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #e8f0fe;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: #fff;
     }
 
-    .login-container {
-      background-color: white;
+    .container {
+      width: 360px;
+      margin: 60px auto;
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      width: 300px;
+      background: #1e1e1e;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
       text-align: center;
     }
 
+    .logo {
+      display: block;
+      margin: 0 auto;
+      width: 110px;
+      margin-bottom: 10px;
+    }
+
+    .center-title {
+      font-size: 22px;
+      color: #00bcd4;
+      margin-top: 5px;
+    }
+
     h2 {
-      margin-bottom: 20px;
-      color: #1a237e;
+      margin: 15px 0;
+      color: #ffffff;
     }
 
     input[type="text"], input[type="password"] {
-      width: 100%;
+      width: 90%;
       padding: 10px;
       margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border: none;
+      border-radius: 8px;
+      background: #2c3e50;
+      color: #fff;
+    }
+
+    input::placeholder {
+      color: #ccc;
     }
 
     button {
-      background-color: #1a237e;
+      background-color: #00bcd4;
       color: white;
-      padding: 10px;
-      width: 100%;
+      padding: 10px 25px;
       border: none;
-      border-radius: 5px;
-      margin-top: 10px;
+      border-radius: 8px;
+      margin-top: 15px;
       cursor: pointer;
+      font-weight: bold;
     }
 
-    .error {
-      color: red;
-      margin-top: 10px;
+    button:hover {
+      background-color: #0097a7;
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Super Admin Login</h2>
-    <input type="text" id="cnic" placeholder="CNIC e.g. 34501-8971113-7" />
-    <input type="password" id="password" placeholder="Password" />
-    <button onclick="login()">Login</button>
-    <div class="error" id="error"></div>
+  <div class="container">
+    <img src="logo.png" alt="M.Hanif & Sons Logo" class="logo">
+    <h2 class="center-title">Pakistan</h2>
+    <h2>M.Hanif & Sons - Login</h2>
+    <form onsubmit="return validateLogin()">
+      <input type="text" id="cnic" placeholder="Enter CNIC" required><br>
+      <input type="password" id="password" placeholder="Enter Password" required><br>
+      <button type="submit">Login</button>
+    </form>
   </div>
 
   <script>
-    function login() {
-      const cnic = document.getElementById('cnic').value.trim();
-      const password = document.getElementById('password').value.trim();
-      const error = document.getElementById('error');
+    function validateLogin() {
+      const cnic = document.getElementById("cnic").value.trim();
+      const pass = document.getElementById("password").value.trim();
 
-      // ✅ Only allow the specified CNIC and Password
-      if (cnic === '34501-8971113-7' && password === 'Asad@2723') {
-        window.location.href = 'dashboard.html'; // Or any page you want
+      if (cnic === "34501-8971113-7" && pass === "Asad@2723") {
+        window.location.href = "dashboard.html";
+        return false;
       } else {
-        error.textContent = 'غلط CNIC یا پاس ورڈ!';
+        alert("Invalid CNIC or Password");
+        return false;
       }
     }
   </script>
