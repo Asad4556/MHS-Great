@@ -1,74 +1,77 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>M.Hanif & Sons - Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #fff;
-      direction: rtl;
-      padding: 20px;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #ffffff;
     }
     header {
-      background: #007bff;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      margin-bottom: 20px;
+      background-color: #1f1f1f;
+      padding: 20px;
       text-align: center;
+      border-bottom: 2px solid #2a9d8f;
     }
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #007bff;
-      font-weight: bold;
+    header img {
+      height: 70px;
+      vertical-align: middle;
     }
-    nav a:hover {
-      text-decoration: underline;
+    header h1 {
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 24px;
+      color: #2a9d8f;
     }
-    .content {
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+    .card {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h2 {
       font-size: 18px;
-      line-height: 1.6;
+      color: #f4a261;
+    }
+    .tagline {
       text-align: center;
-    }
-    button.logout-btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #dc3545;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button.logout-btn:hover {
-      background: #a71d2a;
+      font-size: 18px;
+      margin-top: 10px;
+      color: #e76f51;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>خوش آمدید - M.Hanif & Sons</h1>
-    <nav>
-      <a href="finance.html">Finance</a>
-      <a href="hr.html">HR</a>
-      <a href="store.html">Store</a>
-      <a href="reception.html">Reception</a>
-    </nav>
+    <img src="logo.png" alt="Company Logo" />
+    <h1>M.Hanif & Sons</h1>
+    <div class="tagline">Pakistan</div>
   </header>
 
-  <div class="content">
-    <p>یہ آپ کا ڈیش بورڈ ہے۔ یہاں سے آپ مختلف سیکشنز تک رسائی حاصل کر سکتے ہیں۔</p>
-    <button class="logout-btn" onclick="logout()">لاگ آؤٹ</button>
+  <div class="grid">
+    <div class="card"><h2>HR Department</h2></div>
+    <div class="card"><h2>Finance</h2></div>
+    <div class="card"><h2>Store</h2></div>
+    <div class="card"><h2>Reception</h2></div>
+    <div class="card"><h2>Admin Panel</h2></div>
   </div>
 
-  <script>
-    function logout() {
-      // Simple logout redirect to login page
-      window.location.href = 'index.html';
-    }
-  </script>
 </body>
 </html>
+
