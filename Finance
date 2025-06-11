@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>فنانس ڈیپارٹمنٹ - MHS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      direction: rtl;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    header {
+      background-color: #343a40;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+    }
+    .content {
+      margin-top: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    a.back-link {
+      display: inline-block;
+      margin-top: 15px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a.back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>فنانس ڈیپارٹمنٹ</h2>
+  </header>
+
+  <div class="content">
+    <p>یہاں آپ اخراجات، آمدنی اور دیگر مالی معاملات دیکھ سکتے ہیں۔</p>
+
+    <ul>
+      <li>ماہانہ بجٹ</li>
+      <li>سیلری ریکارڈ</li>
+      <li>رسیدیں اور انوائسز</li>
+    </ul>
+
+    <a href="dashboard.html" class="back-link">← واپس ڈیش بورڈ پر جائیں</a>
+  </div>
+</body>
+</html>
