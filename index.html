@@ -1,72 +1,26 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
   <title>M.Hanif & Sons - Login</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
-      text-align: center;
-      padding: 50px;
-      direction: rtl;
-    }
-    .login-box {
-      background: white;
-      padding: 20px;
-      max-width: 300px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 8px;
-    }
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      direction: ltr;
-      text-align: left;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="login-box">
+  <div class="login-container">
     <h2>M.Hanif & Sons - Login</h2>
     <form id="loginForm">
-      <label for="cnic">CNIC درج کریں:</label>
-      <input type="text" id="cnic" name="cnic" placeholder="12345-1234567-1" required />
-      <button type="submit">لاگ ان</button>
+      <label for="cnic">Enter CNIC:</label>
+      <input type="text" id="cnic" name="cnic" placeholder="e.g. 34501-8971113-7" required>
+
+      <label for="password">Enter Password:</label>
+      <input type="password" id="password" name="password" placeholder="e.g. Asad@2723" required>
+
+      <button type="submit">Login</button>
     </form>
+    <p id="loginMessage"></p>
   </div>
 
-  <script>
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const cnic = document.getElementById('cnic').value.trim();
-      const cnicRegex = /^[0-9]{5}-[0-9]{7}-[0-9]$/;
-      if (!cnicRegex.test(cnic)) {
-        alert('براہ کرم درست CNIC فارمٹ درج کریں (مثال: 12345-1234567-1)');
-        return;
-      }
-      // CNIC valid hai, dashboard par redirect karen
-      window.location.href = 'dashboard.html';
-    });
-  </script>
+  <script src="auth.js"></script>
 </body>
 </html>
+
