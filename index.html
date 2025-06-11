@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>M.Hanif & Sons</title>
   <style>
     body {
@@ -11,89 +11,64 @@
       background-color: #121212;
       color: #ffffff;
     }
-
     header {
+      background-color: #1f1f1f;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #1f1f1f;
-      padding: 10px 30px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      padding: 10px 40px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
-
-    header img {
-      height: 60px;
+    .logo {
+      height: 50px;
     }
-
-    nav {
-      background-color: #1a1a1a;
-      display: flex;
-      justify-content: center;
-      padding: 10px;
-      gap: 20px;
-    }
-
     nav a {
-      color: #ddd;
+      margin: 0 15px;
       text-decoration: none;
-      font-weight: bold;
-      padding: 8px 14px;
-      border-radius: 5px;
-      transition: background 0.3s, color 0.3s;
+      color: #f0f0f0;
+      font-weight: 500;
+      transition: color 0.3s;
     }
-
     nav a:hover {
-      background-color: #3b82f6;
-      color: #ffffff;
+      color: #00bcd4;
     }
-
-    .login-btn {
-      background-color: #3b82f6;
-      color: white;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
+    nav {
+      display: flex;
+      align-items: center;
     }
-
     .main-content {
+      padding: 40px;
       text-align: center;
-      padding: 60px 20px;
     }
-
     h1 {
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-      color: #3b82f6;
+      font-size: 36px;
+      color: #00e676;
     }
-
     p {
-      font-size: 1.1rem;
-      color: #aaa;
+      font-size: 18px;
+      color: #cccccc;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="company-logo.png" alt="Company Logo">
-    <img src="pakistan-logo.png" alt="Pakistan Logo">
-  </header>
-
+<header>
+  <img src="company-logo.png" alt="Company Logo" class="logo">
   <nav>
     <a href="#">Careers</a>
     <a href="#">News</a>
     <a href="#">Media</a>
-    <a href="#">WhatsApp Chat</a>
+    <a href="https://wa.me/923001234567" target="_blank">WhatsApp Chat</a>
     <a href="#">Live Chat</a>
-    <a href="login.html" class="login-btn">Login</a>
+    <a href="login.html">Login</a>
   </nav>
+  <img src="pakistan-logo.png" alt="Pakistan Logo" class="logo">
+</header>
 
-  <div class="main-content">
-    <h1>Welcome to M. Hanif & Sons</h1>
-    <p>Serving with integrity, growth, and vision. Explore our departments and stay connected with our team.</p>
-  </div>
+<div class="main-content">
+  <h1>Welcome to M. Hanif & Sons</h1>
+  <p>Your trusted partner in progress. Explore the site using the navigation above.</p>
+</div>
 
 </body>
 </html>
