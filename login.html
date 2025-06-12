@@ -3,120 +3,136 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - M.Hanif & Sons</title>
+  <title>M.Hanif & Sons - Login</title>
   <style>
     body {
       background-color: #0f172a;
-      color: #fff;
+      color: white;
       font-family: Arial, sans-serif;
+      margin: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      margin: 0;
     }
-    header {
+
+    .header {
       position: absolute;
-      top: 0;
+      top: 10px;
       width: 100%;
+      padding: 0 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 30px;
+    }
+
+    .header img {
+      height: 60px;
+    }
+
+    .login-container {
       background-color: #1e293b;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
     }
-    .logo {
-      height: 50px;
+
+    .login-container h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
     }
-    .nav-links {
-      color: white;
-      font-size: 16px;
-    }
-    .login-box {
-      background-color: #1e293b;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      width: 300px;
-    }
-    input[type="text"], input[type="password"] {
+
+    .login-container input {
       width: 100%;
       padding: 10px;
-      margin-top: 10px;
       margin-bottom: 15px;
-      border-radius: 8px;
-      border: none;
-      background-color: #334155;
-      color: white;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
       border: none;
       border-radius: 8px;
-      background-color: #0ea5e9;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
     }
+
+    .password-container {
+      position: relative;
+    }
+
+    .password-container input {
+      padding-right: 40px;
+    }
+
     .toggle-password {
       position: absolute;
-      right: 35px;
-      top: 238px;
-      cursor: pointer;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
       color: #ccc;
+      cursor: pointer;
     }
-    .error {
-      color: red;
-      text-align: center;
-      margin-top: 10px;
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="pakistan-logo.png" class="logo" alt="Pakistan Logo">
-    <div class="nav-links">
-      Login | Careers | News | Media
-    </div>
-    <img src="company-logo.png" class="logo" alt="Company Logo">
-  </header>
 
-  <div class="login-box">
-    <h2 style="text-align:center;">Login to M.Hanif & Sons</h2>
-    <form onsubmit="return validateLogin();">
-      <input type="text" id="cnic" placeholder="Enter CNIC" required />
-      <input type="password" id="password" placeholder="Enter Password" required />
-      <span class="toggle-password" onclick="togglePassword()">👁️</span>
+  <div class="header">
+    <img src="pakistan-logo.png" alt="Pakistan Logo" />
+    <img src="company-logo.png" alt="Company Logo" />
+  </div>
+
+  <div class="login-container">
+    <h2>Login to M.Hanif & Sons</h2>
+    <form action="dashboard.html" method="POST" onsubmit="return validateLogin()">
+      <input type="text" id="cnic" placeholder="Enter your CNIC" required />
+      <div class="password-container">
+        <input type="password" id="password" placeholder="Enter your password" required />
+        <button type="button" class="toggle-password" onclick="togglePassword()">👁️</button>
+      </div>
       <button type="submit">Login</button>
-      <div class="error" id="errorMsg"></div>
     </form>
   </div>
 
   <script>
     function togglePassword() {
-      const passwordField = document.getElementById("password");
-      if (passwordField.type === "password") {
-        passwordField.type = "text";
+      const passField = document.getElementById('password');
+      if (passField.type === "password") {
+        passField.type = "text";
       } else {
-        passwordField.type = "password";
+        passField.type = "password";
       }
     }
 
     function validateLogin() {
-      const cnic = document.getElementById("cnic").value;
-      const password = document.getElementById("password").value;
-      const errorDiv = document.getElementById("errorMsg");
-
+      const cnic = document.getElementById('cnic').value;
+      const password = document.getElementById('password').value;
       if (cnic === "34501-8971113-7" && password === "Asad@2723") {
-        window.location.href = "dashboard.html"; // replace with your actual page
-        return false;
+        return true; // Allow login
       } else {
-        errorDiv.textContent = "CNIC یا Password غلط ہے۔";
+        alert("CNIC یا Password غلط ہے۔");
         return false;
       }
     }
   </script>
+
 </body>
 </html>
