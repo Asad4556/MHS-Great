@@ -1,26 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>M.Hanif & Sons - Home</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>M.Hanif & Sons - Login</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <img src="assets/images/pakistan-logo.png" alt="Pakistan Logo" style="float:left; height:50px;">
-        <h1 style="text-align:center;">M.Hanif & Sons</h1>
-        <img src="assets/images/company-logo.png" alt="Company Logo" style="float:right; height:50px;">
-    </header>
-    <nav>
-        <a href="login.html">Login</a> |
-        <a href="#">Careers</a> |
-        <a href="#">News</a> |
-        <a href="#">Media</a>
-    </nav>
-    <footer>
-        <button onclick="location.href='https://wa.me/923398067880'" style="position:fixed;bottom:10px;left:10px;">WhatsApp Chat</button>
-        <button style="position:fixed;bottom:10px;right:10px;">Live Chat</button>
-    </footer>
+  <header class="top-bar">
+    <img src="pakistan-logo.png" alt="Pakistan Logo" class="logo-left"/>
+    <h1>M.Hanif & Sons</h1>
+    <img src="company-logo.png" alt="Company Logo" class="logo-right"/>
+  </header>
+
+  <nav class="navbar">
+    <a href="#">Login</a>
+    <a href="#">Careers</a>
+    <a href="#">News</a>
+    <a href="#">Media</a>
+  </nav>
+
+  <main class="login-section">
+    <form class="login-form" onsubmit="return validateLogin(event)">
+      <label for="cnic">CNIC:</label>
+      <input type="text" id="cnic" placeholder="e.g. 34501-8971113-7" required />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="e.g. Asad@2723" required />
+      <button type="button" onclick="togglePassword()">👁 Show</button>
+
+      <button type="submit">Login</button>
+      <p id="error-msg" class="error-msg" style="display:none;">CNIC یا Password غلط ہے۔</p>
+    </form>
+  </main>
+
+  <div class="chat-buttons">
+    <a href="https://wa.me/923398067880" target="_blank" class="whatsapp-btn">WhatsApp Chat</a>
+    <a href="#" class="livechat-btn">Live Chat</a>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const pass = document.getElementById('password');
+      pass.type = pass.type === 'password' ? 'text' : 'password';
+    }
+
+    function validateLogin(event) {
+      event.preventDefault();
+      const cnic = document.getElementById('cnic').value;
+      const password = document.getElementById('password').value;
+      if (cnic === "34501-8971113-7" && password === "Asad@2723") {
+        window.location.href = "dashboard.html";
+      } else {
+        document.getElementById("error-msg").style.display = "block";
+      }
+    }
+  </script>
 </body>
 </html>
