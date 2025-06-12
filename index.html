@@ -1,233 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>M.Hanif & Sons - Login</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Login - M.Hanif & Sons</title>
   <style>
     body {
-      background: #0f172a<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MHS Login</title>
-  <style>
-    body {
+      background-color: #1e1e2f;
+      color: white;
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #1e1e2f;
-      color: #fff;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 30px;
-      background: #2b2b3a;
-    }
-    header img {
-      height: 60px;
-    }
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 50px;
+      justify-content: center;
+      height: 100vh;
+    }
+    .logo-row {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px 30px;
+      position: absolute;
+      top: 0;
+    }
+    .logo-row img {
+      height: 50px;
     }
     .login-box {
-      background: #2f2f46;
+      background-color: #2f2f46;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-      width: 320px;
-    }
-    .login-box h2 {
       text-align: center;
-      margin-bottom: 20px;
+      width: 300px;
+      box-shadow: 0 0 10px #000;
     }
-    .input-group {
-      margin-bottom: 15px;
-    }
-    .input-group label {
-      display: block;
-      margin-bottom: 5px;
-    }
-    .input-group input {
+    input {
       width: 100%;
       padding: 10px;
+      margin: 10px 0;
       border: none;
-      border-radius: 6px;
-      outline: none;
+      border-radius: 8px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #3e6fee;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
     }
     .toggle-password {
-      margin-top: 5px;
-      font-size: 13px;
+      float: right;
+      margin-top: -30px;
+      margin-right: 10px;
       cursor: pointer;
-      color: #a0a0ff;
-    }
-    .login-box button {
-      width: 100%;
-      padding: 10px;
-      background: #3e6fee;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .bottom-buttons {
-      position: fixed;
-      bottom: 20px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    .bottom-buttons a {
-      background: #25D366;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: bold;
-    }
-    .bottom-buttons a.livechat {
-      background: #007bff;
+      font-size: 12px;
+      color: #ccc;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="company-logo.png" alt="Company Logo" />
-    <nav>
-      <a href="#">Careers</a>
-      <a href="#">News</a>
-      <a href="#">Media</a>
-      <a href="#">Login</a>
-    </nav>
-    <img src="pakistan-logo.png" alt="Pakistan Logo" />
-  </header>
-
-  <div class="container">
-    <div class="login-box">
-      <h2>Super Admin Login</h2>
-      <form onsubmit="login(event)">
-        <div class="input-group">
-          <label for="cnic">CNIC</label>
-          <input type="text" id="cnic" placeholder="e.g. 34501-8971113-7" required />
-        </div>
-        <div class="input-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="Enter Password" required />
-          <div class="toggle-password" onclick="togglePassword()">👁 Show Password</div>
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+  <div class="logo-row">
+    <img src="company-logo.png" alt="Company Logo">
+    <img src="pakistan-logo.png" alt="Pakistan Logo">
   </div>
 
-  <div class="bottom-buttons">
-    <a href="https://wa.me/923398067880" target="_blank">WhatsApp Chat</a>
-    <a href="#" class="livechat">Live Chat</a>
+  <div class="login-box">
+    <h2>Login to M.Hanif & Sons</h2>
+    <input type="text" id="cnic" placeholder="CNIC e.g. 34501-8971113-7">
+    
+    <div style="position: relative;">
+      <input type="password" id="password" placeholder="Password e.g. Asad@2723">
+      <span class="toggle-password" onclick="togglePassword()">Show</span>
+    </div>
+
+    <button onclick="login()">Login</button>
+    <div class="error" id="error-msg"></div>
   </div>
 
   <script>
     function togglePassword() {
-      const passwordField = document.getElementById("password");
-      if (passwordField.type === "password") {
-        passwordField.type = "text";
+      const pass = document.getElementById("password");
+      const toggle = document.querySelector(".toggle-password");
+      if (pass.type === "password") {
+        pass.type = "text";
+        toggle.textContent = "Hide";
       } else {
-        passwordField.type = "password";
+        pass.type = "password";
+        toggle.textContent = "Show";
       }
     }
 
-    function login(e) {
-      e.preventDefault();
-      const cnic = document.getElementById("cnic").value;
-      const password = document.getElementById("password").value;
+    function login() {
+      const cnic = document.getElementById("cnic").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorMsg = document.getElementById("error-msg");
 
       if (cnic === "34501-8971113-7" && password === "Asad@2723") {
         window.location.href = "dashboard.html";
       } else {
-        alert("Invalid CNIC or Password");
+        errorMsg.textContent = "CNIC یا Password غلط ہے۔";
       }
     }
   </script>
-
-</body>
-</html>
-
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .chat-btn {
-      position: fixed;
-      bottom: 20px;
-      padding: 10px 15px;
-      border-radius: 999px;
-      font-weight: bold;
-      z-index: 999;
-    }
-    .whatsapp {
-      right: 20px;
-      background-color: #25D366;
-      color: white;
-    }
-    .livechat {
-      left: 20px;
-      background-color: #1e40af;
-      color: white;
-    }
-  </style>
-</head>
-<body class="text-white">
-
-  <!-- Header with Logos and Navigation -->
-  <header class="flex items-center justify-between px-6 py-4 bg-gray-800 shadow-lg">
-    <img src="images/company-logo.png" alt="Company Logo" class="h-12" />
-    
-    <nav class="flex space-x-6 text-lg text-gray-300">
-      <a href="#" class="hover:text-yellow-400">Careers</a>
-      <a href="#" class="hover:text-yellow-400">News</a>
-      <a href="#" class="hover:text-yellow-400">Media</a>
-    </nav>
-
-    <img src="images/pakistan-logo.png" alt="Pakistan Logo" class="h-12" />
-  </header>
-
-  <!-- Login Form Centered -->
-  <main class="flex items-center justify-center min-h-[80vh]">
-    <div class="bg-gray-900 p-8 rounded-xl shadow-xl w-full max-w-md">
-      <h2 class="text-2xl font-bold text-center mb-6 text-yellow-400">Login</h2>
-      <form>
-        <label class="block mb-2 text-gray-300">CNIC</label>
-        <input type="text" placeholder="12345-6789012-3" class="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white mb-4" required>
-
-        <label class="block mb-2 text-gray-300">Password</label>
-        <input type="password" placeholder="••••••" class="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white mb-6" required>
-
-        <button type="submit" class="w-full bg-yellow-500 text-black py-2 rounded font-bold hover:bg-yellow-600">Login</button>
-      </form>
-    </div>
-  </main>
-
-  <!-- WhatsApp Chat Button -->
-  <a href="https://wa.me/923398067880" target="_blank" class="chat-btn whatsapp">WhatsApp</a>
-
-  <!-- Live Chat Button -->
-  <a href="#" class="chat-btn livechat">Live Chat</a>
-
 </body>
 </html>
