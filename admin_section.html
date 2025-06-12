@@ -1,10 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Admin Section</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Letter Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    select, textarea, input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    #preview {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-top: 20px;
+      position: relative;
+      background: url('logo.png') center center no-repeat;
+      background-size: 300px;
+    }
+    .signature {
+      margin-top: 50px;
+    }
+    .qr {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
+  </style>
 </head>
 <body>
-  <h2>Admin Section</h2>
-  <p>Letter generator for experience, NOC, termination etc.</p>
+  <h1>Letter Generator (Admin Section)</h1>
+
+  <label for="letterType">Select Letter Type:</label>
+  <select id="letterType">
+    <option value="experience">Experience Letter</option>
+    <option value="termination">Termination Letter</option>
+    <option value="noc">NOC</option>
+  </select>
+
+  <label for="employeeName">Employee Name:</label>
+  <input type="text" id="employeeName" placeholder="Enter full name" />
+
+  <label for="content">Custom Notes / Description:</label>
+  <textarea id="content" rows="4"></textarea>
+
+  <button onclick="generateLetter()">Generate Letter</button>
+  <button onclick="downloadPDF()">Download PDF</button>
+
+  <div id="preview">
+    <!-- Letter will be shown here -->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script>
+    function generateLetter() {
+      const type = document.getElementById('letterType').value;
+      const name = document.getElementById('employeeName').value;
+      const content = document.getElementById('content').value;
+      const preview = document.getElementById('preview');
+
+      let letterBody = "";
+
+      const date = new Date().toLocaleDateString();
+      const email = "info@mhs.com.pk";
+      const company = "M. Hanif & Sons";
+
+      if (type === "experience") {
+        letterBody = `<p>This is to certify that <strong>${name}</strong> has worked with ${company} from [start date] to [end date]. They have shown excellent performance during their tenure.</p>`;
+      } else if (type === "termination") {
+        letterBody = `<p>This is to inform that <strong>${name}</strong>'s employment with ${company} has been terminated as of ${date}. We wish them the best for their future.</p>`;
+      } else {
+        letterBody = `<p>This is to certify that <strong>${name}</strong> has no objection from our side to pursue further opportunities. We wish them success.</p>`;
+      }
+
+      preview.innerHTML = `
+        <h2>${company}</h2>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <hr/>
+        ${letterBody}
+        <p>${content}</p>
+        <div class="signature">
+          <p>Authorized Signatory</p>
+          <img src="stamp.png" width="120"/>
+        </div>
+        <canvas class="qr" id="qrcode"></canvas>
+      `;
+
+      QRCode.toCanvas(document.getElementById("qrcode"), `${name}-${date}`, function (error) {
+        if (error) console.error(error);
+      });
+    }
+
+    function downloadPDF() {
+      const element = document.getElementById("preview");
+      html2pdf().from(element).save("letter.pdf");
+    }
+  </script>
 </body>
 </html>
