@@ -2,38 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Super Admin Login</title>
+  <title>MHS Login</title>
   <style>
     body {
-      background: #121212;
+      background-color: #121212;
       color: white;
       font-family: Arial, sans-serif;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
+      margin: 0;
     }
     .login-box {
-      background: #1e1e1e;
-      padding: 40px;
-      border-radius: 8px;
+      background: #1f1f1f;
+      padding: 30px;
+      border-radius: 10px;
       width: 300px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
     input {
-      width: 100%;
-      margin: 10px 0;
+      width: 90%;
       padding: 10px;
+      margin: 10px 0;
       border: none;
-      border-radius: 4px;
+      border-radius: 5px;
     }
     button {
-      width: 100%;
-      padding: 10px;
-      background: #007bff;
+      padding: 10px 20px;
+      background-color: #007bff;
       border: none;
       color: white;
-      border-radius: 4px;
+      border-radius: 5px;
       cursor: pointer;
+      margin-top: 10px;
     }
     .error {
       color: red;
@@ -42,12 +46,13 @@
   </style>
 </head>
 <body>
+
   <div class="login-box">
-    <h2>Login</h2>
-    <input type="text" id="cnic" placeholder="Enter CNIC">
-    <input type="password" id="password" placeholder="Enter Password">
+    <h2>Login to M.Hanif & Sons</h2>
+    <input type="text" id="cnic" placeholder="CNIC e.g. 34501-8971113-7">
+    <input type="password" id="password" placeholder="Password e.g. Asad@2723">
     <button onclick="login()">Login</button>
-    <div class="error" id="error-msg"></div>
+    <div class="error" id="errorMsg"></div>
   </div>
 
   <script>
@@ -56,11 +61,12 @@
       const password = document.getElementById("password").value;
 
       if (cnic === "34501-8971113-7" && password === "Asad@2723") {
-        window.location.href = "dashboard.html"; // ✔️ Super Admin Page
+        window.location.href = "dashboard.html";
       } else {
-        document.getElementById("error-msg").innerText = "CNIC یا پاسورڈ غلط ہے!";
+        document.getElementById("errorMsg").innerText = "CNIC یا Password غلط ہے۔";
       }
     }
   </script>
+
 </body>
 </html>
