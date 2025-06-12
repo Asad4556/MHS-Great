@@ -7,122 +7,159 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background: #0d1117;
       font-family: 'Segoe UI', sans-serif;
-      color: #ffffff;
+      background: #121212;
+      color: #fff;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
     }
-    .wrapper {
-      display: flex;
-      gap: 60px;
-      background: #161b22;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 0 30px rgba(0,255,255,0.1);
-    }
-    .login-box {
-      background: #1f2937;
-      padding: 30px;
-      border-radius: 12px;
-      width: 300px;
-    }
-    h2 {
-      text-align: center;
-      color: #00d1b2;
-      margin-bottom: 20px;
-    }
-    label {
-      font-size: 14px;
-      display: block;
-      margin: 10px 0 5px;
-    }
-    input {
+
+    .logos {
       width: 100%;
-      padding: 10px;
-      border: none;
-      background: #111827;
-      color: white;
-      border-radius: 8px;
-      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      position: absolute;
+      top: 20px;
     }
+
+    .logos img {
+      height: 60px;
+    }
+
+    .container {
+      background: #1f1f1f;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .tab-btn {
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .tab-btn.active {
+      background: #00bcd4;
+    }
+
+    form {
+      display: none;
+      margin-top: 20px;
+    }
+
+    form.active {
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: none;
+      background: #2c2c2c;
+      color: #fff;
+    }
+
     .password-wrapper {
       position: relative;
+      width: 90%;
+      margin: auto;
     }
+
+    .password-wrapper input {
+      width: 100%;
+    }
+
     .toggle-password {
       position: absolute;
-      right: 10px;
       top: 12px;
+      right: 10px;
       cursor: pointer;
-      color: #888;
+      font-size: 14px;
     }
-    button {
-      width: 100%;
-      padding: 10px;
-      background-color: #00d1b2;
+
+    .login-btn {
+      background: #00bcd4;
+      padding: 10px 20px;
       border: none;
       color: white;
-      font-size: 16px;
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
-    }
-    .create-link {
-      display: block;
-      text-align: center;
       margin-top: 10px;
-      color: #00d1b2;
+    }
+
+    .change-link {
+      margin-top: 10px;
+      font-size: 14px;
+      display: block;
+    }
+
+    a {
+      color: #00bcd4;
       text-decoration: none;
     }
   </style>
 </head>
 <body>
+  <div class="logos">
+    <img src="pakistan_logo.png" alt="Pakistan Logo" />
+    <img src="company_logo.png" alt="Company Logo" />
+  </div>
 
-  <div class="wrapper">
-    <!-- Super Admin Login -->
-    <div class="login-box">
-      <h2>Super Admin</h2>
-      <form action="dashboard.html" method="POST">
-        <label for="admin-cnic">CNIC</label>
-        <input type="text" id="admin-cnic" name="cnic" placeholder="e.g. 34501-8971113-7" required />
+  <div class="container">
+    <h2>Login to M.Hanif & Sons</h2>
+    <button class="tab-btn active" onclick="switchTab('admin')">Super Admin</button>
+    <button class="tab-btn" onclick="switchTab('worker')">Worker</button>
 
-        <label for="admin-password">Password</label>
-        <div class="password-wrapper">
-          <input type="password" id="admin-password" name="password" placeholder="Enter password" required />
-          <span class="toggle-password" onclick="togglePassword('admin-password')">👁️</span>
-        </div>
+    <form id="admin" class="active">
+      <input type="text" id="admin_cnic" placeholder="CNIC e.g. 34501-8971113-7" required />
+      <div class="password-wrapper">
+        <input type="password" id="admin_password" placeholder="Password e.g. Asad@2723" required />
+        <span class="toggle-password" onclick="togglePassword('admin_password')">👁️</span>
+      </div>
+      <button class="login-btn">Login</button>
+      <a href="#" class="change-link">Change Password</a>
+    </form>
 
-        <button type="submit">Login</button>
-      </form>
-    </div>
-
-    <!-- Worker Login -->
-    <div class="login-box">
-      <h2>Worker</h2>
-      <form action="worker-dashboard.html" method="POST">
-        <label for="worker-cnic">CNIC</label>
-        <input type="text" id="worker-cnic" name="cnic" placeholder="e.g. 35201-XXXXXXX-X" required />
-
-        <label for="worker-password">Password</label>
-        <div class="password-wrapper">
-          <input type="password" id="worker-password" name="password" placeholder="Enter password" required />
-          <span class="toggle-password" onclick="togglePassword('worker-password')">👁️</span>
-        </div>
-
-        <button type="submit">Login</button>
-        <a href="create-worker.html" class="create-link">Create Worker Account</a>
-      </form>
-    </div>
+    <form id="worker">
+      <input type="text" id="worker_cnic" placeholder="CNIC" required />
+      <div class="password-wrapper">
+        <input type="password" id="worker_password" placeholder="Password" required />
+        <span class="toggle-password" onclick="togglePassword('worker_password')">👁️</span>
+      </div>
+      <button class="login-btn">Login</button>
+      <a href="#" class="change-link">Create Account</a>
+      <a href="#" class="change-link">Change Password</a>
+    </form>
   </div>
 
   <script>
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('form').forEach(f => f.classList.remove('active'));
+
+      document.getElementById(tab).classList.add('active');
+      event.target.classList.add('active');
+    }
+
     function togglePassword(id) {
-      const field = document.getElementById(id);
-      field.type = field.type === "password" ? "text" : "password";
+      const input = document.getElementById(id);
+      input.type = input.type === 'password' ? 'text' : 'password';
     }
   </script>
-
 </body>
 </html>
