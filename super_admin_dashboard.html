@@ -1,69 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Super Admin Dashboard - MHS</title>
-  <style>
-    body {
-      background-color: #1e1e2f;
-      font-family: 'Segoe UI', sans-serif;
-      color: white;
-      padding: 40px;
-      text-align: center;
-    }
-
-    h1 {
-      color: #00cec9;
-      font-size: 32px;
-      margin-bottom: 30px;
-    }
-
-    .section-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    button {
-      padding: 20px;
-      background: linear-gradient(to right, #6c5ce7, #00b894);
-      border: none;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px #00b894;
-    }
-
-    .footer {
-      margin-top: 40px;
-      font-size: 13px;
-      color: #aaa;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Super Admin Dashboard - M.Hanif & Sons</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 </head>
 <body>
-
-  <h1>Welcome, Super Admin</h1>
+  <h1 class="heading">Super Admin Dashboard - M.Hanif & Sons</h1>
 
   <div class="section-buttons">
-    <button onclick="location.href='hr_section.html'">HR Section</button>
-    <button onclick="location.href='finance_section.html'">Finance Section</button>
-    <button onclick="location.href='admin_letters.html'">Admin Section (Letters)</button>
-    <button onclick="location.href='reception_section.html'">Reception</button>
-    <button onclick="location.href='logistic_section.html'">Logistic</button>
-    <button onclick="location.href='add_section.html'">+ Add New Section</button>
+    <button onclick="openSection('hr')">HR Section</button>
+    <button onclick="openSection('finance')">Finance Section</button>
+    <button onclick="openSection('admin')">Admin Section (Letters)</button>
+    <button onclick="openSection('reception')">Reception</button>
+    <button onclick="openSection('logistic')">Logistic</button>
+    <button onclick="showAddSectionForm()">+ Add New Section</button>
   </div>
 
-  <div class="footer">© 2025 M.Hanif & Sons</div>
+  <!-- Section container -->
+  <div id="sectionContent"></div>
 
+  <!-- Add New Section Form -->
+  <div id="addSectionForm" style="display:none; margin-top: 20px;">
+    <h3>Add New Section</h3>
+    <input type="text" id="newSectionName" placeholder="Enter Section Name">
+    <button onclick="addNewSection()">Add</button>
+  </div>
+
+  <script>
+    const sectionTemplates = {
+      hr: `
+        <h2>HR Section</h2>
+        <form id="hrForm">
+          <input type="text" placeholder="Name" required>
+          <input type="text" placeholder="CNIC" required>
+          <input type="text" placeholder="Phone Number" required>
+          <button type="submit">Save</button>
+        </form>
+        <button onclick="exportExcel('hr')">Export Excel</button>
+        <button onclick="exportPDF('HR Section')">Export PDF</button>
+      `,
+      finance: `
+        <h2>Finance Section</h2>
+        <form id="financeForm">
+          <input type="text" placeholder="Transaction ID" required>
+          <input type="number" placeholder="Amount" required>
+          <input type="date" required>
+          <button type="submit">Save</button>
+        </form>
+        <button onclick="exportExcel('finance')">Export Excel</button>
+        <button onclick="exportPDF('Finance Section')">Export PDF</button>
+      `,
+      admin: `
+        <h2>Admin Section (Letters)</h2>
+        <button onclick="window.location.href='letter_generator.html'">Generate Letter</button>
+      `,
+      reception: `
+        <h2>Reception Section</h2>
+        <form id="receptionForm">
+          <input type="text" placeholder="Visitor Name" required>
+          <input type="text" placeholder="Purpose" required>
+          <input type="time" required>
+          <button type="submit">Save</button>
+        </form>
+        <button onclick="exportExcel('reception')">Export Excel</button>
+        <button onclick="exportPDF('Reception Section')">Export PDF</button>
+      `,
+      logistic: `
+        <h2>Logistic Section</h2>
+        <form id="logisticForm">
+          <input type="text" placeholder="Item Name" required>
+          <input type="number" placeholder="Quantity" required>
+          <input type="date" required>
+          <button type="submit">Save</button>
+        </form>
+        <button onclick="exportExcel('logistic')">Export Excel</button>
+        <button onclick="exportPDF('Logistic Section')">Export PDF</button>
+      `
+    };
+
+    function openSection(section) {
+      const content = sectionTemplates[section] || "<p>Section not found.</p>";
+      document.getElementById("sectionContent").innerHTML = content;
+    }
+
+    function showAddSectionForm() {
+      document.getElementById("addSectionForm").style.display = "block";
+    }
+
+    function addNewSection() {
+      const newSectionName = document.getElementById("newSectionName").value;
+      if (newSectionName) {
+        sectionTemplates[newSectionName.toLowerCase()] = `
+          <h2>${newSectionName}</h2>
+          <form>
+            <input type="text" placeholder="Data Field 1">
+            <input type="text" placeholder="Data Field 2">
+            <button type="submit">Save</button>
+          </form>
+        `;
+        alert("New section added successfully!");
+      }
+    }
+
+    function exportExcel(section) {
+      alert("Export to Excel for: " + section);
+    }
+
+    function exportPDF(sectionName) {
+      alert("Exporting PDF for: " + sectionName);
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f0f2f5;
+    }
+    .heading {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .section-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #1d3557;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #457b9d;
+    }
+    form {
+      margin: 10px 0;
+    }
+    form input {
+      display: block;
+      margin: 5px 0;
+      padding: 8px;
+      width: 100%;
+      max-width: 300px;
+    }
+  </style>
 </body>
 </html>
