@@ -1,136 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>M.Hanif & Sons - Login</title>
+  <title>M.Hanif & Sons | Login</title>
   <style>
     body {
-      background-color: #0f172a;
+      background: #121212;
       color: white;
-      font-family: Arial, sans-serif;
-      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
+      margin: 0;
     }
-
-    .header {
-      position: absolute;
-      top: 10px;
-      width: 100%;
-      padding: 0 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    h2 {
+      margin-bottom: 10px;
+      color: #00d1b2;
     }
-
-    .header img {
-      height: 60px;
-    }
-
     .login-container {
-      background-color: #1e293b;
-      padding: 30px 40px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-      text-align: center;
-      width: 100%;
-      max-width: 400px;
+      display: flex;
+      gap: 40px;
+      margin-top: 20px;
     }
-
-    .login-container h2 {
-      margin-bottom: 20px;
-      font-size: 24px;
+    .login-box {
+      background: #1f1f1f;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,255,255,0.2);
+      width: 280px;
     }
-
-    .login-container input {
+    label {
+      display: block;
+      margin-bottom: 6px;
+    }
+    input {
       width: 100%;
       padding: 10px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
+      background: #333;
+      color: white;
     }
-
-    .password-container {
-      position: relative;
-    }
-
-    .password-container input {
-      padding-right: 40px;
-    }
-
     .toggle-password {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      color: #ccc;
+      position: relative;
+      float: right;
+      margin-top: -34px;
+      margin-right: 10px;
       cursor: pointer;
+      color: #ccc;
     }
-
     button {
       width: 100%;
-      padding: 12px;
-      background-color: #3b82f6;
-      color: white;
+      padding: 10px;
+      background: #00d1b2;
       border: none;
-      border-radius: 8px;
+      color: white;
+      border-radius: 6px;
       cursor: pointer;
     }
-
-    button:hover {
-      background-color: #2563eb;
-    }
-
-    .footer {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #aaa;
+    .create-link {
+      color: #00d1b2;
+      text-align: center;
+      margin-top: 10px;
+      display: block;
     }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <img src="pakistan-logo.png" alt="Pakistan Logo" />
-    <img src="company-logo.png" alt="Company Logo" />
-  </div>
-
+  <h2>Super Admin Login</h2>
   <div class="login-container">
-    <h2>Login to M.Hanif & Sons</h2>
-    <form action="dashboard.html" method="POST" onsubmit="return validateLogin()">
-      <input type="text" id="cnic" placeholder="Enter your CNIC" required />
-      <div class="password-container">
-        <input type="password" id="password" placeholder="Enter your password" required />
-        <button type="button" class="toggle-password" onclick="togglePassword()">👁️</button>
-      </div>
-      <button type="submit">Login</button>
-    </form>
+    <!-- Super Admin Login -->
+    <div class="login-box">
+      <form action="dashboard.html" method="POST">
+        <label for="admin-cnic">CNIC:</label>
+        <input type="text" id="admin-cnic" name="cnic" placeholder="e.g. 34501-8971113-7" required />
+
+        <label for="admin-password">Password:</label>
+        <input type="password" id="admin-password" name="password" placeholder="••••••••" required />
+        <span class="toggle-password" onclick="togglePassword('admin-password')">👁️</span>
+
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <!-- Worker Login -->
+    <div class="login-box">
+      <form action="worker-dashboard.html" method="POST">
+        <label for="worker-cnic">CNIC:</label>
+        <input type="text" id="worker-cnic" name="cnic" placeholder="e.g. 35201-XXXXXXX-X" required />
+
+        <label for="worker-password">Password:</label>
+        <input type="password" id="worker-password" name="password" placeholder="••••••••" required />
+        <span class="toggle-password" onclick="togglePassword('worker-password')">👁️</span>
+
+        <button type="submit">Login</button>
+        <a href="create-worker.html" class="create-link">Create Worker Account</a>
+      </form>
+    </div>
   </div>
 
   <script>
-    function togglePassword() {
-      const passField = document.getElementById('password');
-      if (passField.type === "password") {
-        passField.type = "text";
-      } else {
-        passField.type = "password";
-      }
-    }
-
-    function validateLogin() {
-      const cnic = document.getElementById('cnic').value;
-      const password = document.getElementById('password').value;
-      if (cnic === "34501-8971113-7" && password === "Asad@2723") {
-        return true; // Allow login
-      } else {
-        alert("CNIC یا Password غلط ہے۔");
-        return false;
-      }
+    function togglePassword(id) {
+      const field = document.getElementById(id);
+      field.type = field.type === "password" ? "text" : "password";
     }
   </script>
 
