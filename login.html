@@ -1,137 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - MHS</title>
+  <meta charset="UTF-8">
+  <title>Super Admin Login</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background-color: #121212;
-      color: #fff;
-      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
     }
-
-    header {
-      position: absolute;
-      top: 10px;
-      left: 20px;
-      right: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header img {
-      height: 60px;
-    }
-
-    header nav a {
-      margin: 0 10px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
     .login-box {
-      background-color: #1e1e1e;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      background: #1e1e1e;
+      padding: 40px;
+      border-radius: 8px;
       width: 300px;
-      text-align: center;
     }
-
-    .login-box h2 {
-      margin-bottom: 20px;
-      color: #00bcd4;
-    }
-
-    .login-box input {
+    input {
       width: 100%;
-      padding: 10px;
       margin: 10px 0;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-
-    .login-box button {
-      width: 100%;
       padding: 10px;
       border: none;
-      background-color: #00bcd4;
-      color: #fff;
-      font-weight: bold;
-      border-radius: 5px;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      border: none;
+      color: white;
+      border-radius: 4px;
       cursor: pointer;
     }
-
-    .whatsapp-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      z-index: 9999;
+    .error {
+      color: red;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <img src="assets/mhs-logo.png" alt="MHS Logo" />
-    <nav>
-      <a href="#">Careers</a>
-      <a href="#">News</a>
-      <a href="#">Media</a>
-      <a href="#">Live Chat</a>
-    </nav>
-    <img src="assets/pakistan-logo.png" alt="Pakistan Logo" />
-  </header>
-
   <div class="login-box">
     <h2>Login</h2>
-    <form id="loginForm">
-      <input type="text" id="cnic" placeholder="CNIC (e.g. 34501-8971113-7)" required />
-      <input type="password" id="password" placeholder="Password" required />
-      <button type="submit">Login</button>
-    </form>
+    <input type="text" id="cnic" placeholder="Enter CNIC">
+    <input type="password" id="password" placeholder="Enter Password">
+    <button onclick="login()">Login</button>
+    <div class="error" id="error-msg"></div>
   </div>
 
-  <a class="whatsapp-button" href="https://wa.me/923398067880" target="_blank">
-    WhatsApp Chat
-  </a>
-
   <script>
-    const superAdmin = {
-      cnic: "34501-8971113-7",
-      password: "Asad@2723"
-    };
-
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
-      e.preventDefault();
+    function login() {
       const cnic = document.getElementById("cnic").value.trim();
       const password = document.getElementById("password").value;
 
-      if (cnic === superAdmin.cnic && password === superAdmin.password) {
-        window.location.href = "dashboard.html";
+      if (cnic === "34501-8971113-7" && password === "Asad@2723") {
+        window.location.href = "dashboard.html"; // ✔️ Super Admin Page
       } else {
-        alert("Invalid CNIC or Password.");
+        document.getElementById("error-msg").innerText = "CNIC یا پاسورڈ غلط ہے!";
       }
-    });
+    }
   </script>
-
 </body>
 </html>
