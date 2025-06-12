@@ -1,19 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Super Admin Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Super Admin Dashboard - MHS</title>
+  <style>
+    body {
+      background-color: #1e1e2f;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #00cec9;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .section-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    button {
+      padding: 20px;
+      background: linear-gradient(to right, #6c5ce7, #00b894);
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #00b894;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 13px;
+      color: #aaa;
+    }
+  </style>
 </head>
-<body class="dashboard">
-    <h1>Welcome, Super Admin</h1>
-    <div class="sections">
-        <a href="#">HR Section</a>
-        <a href="#">Finance Section</a>
-        <a href="#">Admin Section (Letters)</a>
-        <a href="#">Reception</a>
-        <a href="#">Logistic</a>
-        <a href="#">+ Add New Section</a>
-    </div>
+<body>
+
+  <h1>Welcome, Super Admin</h1>
+
+  <div class="section-buttons">
+    <button onclick="location.href='hr_section.html'">HR Section</button>
+    <button onclick="location.href='finance_section.html'">Finance Section</button>
+    <button onclick="location.href='admin_letters.html'">Admin Section (Letters)</button>
+    <button onclick="location.href='reception_section.html'">Reception</button>
+    <button onclick="location.href='logistic_section.html'">Logistic</button>
+    <button onclick="location.href='add_section.html'">+ Add New Section</button>
+  </div>
+
+  <div class="footer">© 2025 M.Hanif & Sons</div>
+
 </body>
 </html>
