@@ -1,170 +1,161 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>M.Hanif & Sons - Login</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MHS Super Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #1e293b, #0f172a);
-      color: white;
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      color: #fff;
     }
     header {
+      background-color: #1f1f2e;
+      padding: 1rem 2rem;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 15px 40px;
-      background-color: #111827;
+      justify-content: space-between;
     }
     header img {
-      height: 60px;
+      height: 50px;
     }
-    .company-name {
-      font-size: 28px;
-      font-weight: bold;
-      color: #38bdf8;
+    .container {
+      padding: 2rem;
     }
-    .login-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 80vh;
-      gap: 40px;
+    .section {
+      background-color: #2a2a3b;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
-    .login-box {
-      background-color: #1e293b;
-      padding: 30px;
-      border-radius: 16px;
-      width: 280px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    h2 {
+      margin-top: 0;
     }
-    .login-box h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #38bdf8;
-    }
-    .login-box input {
+    input, select, button, textarea {
       width: 100%;
-      padding: 10px;
-      margin: 10px 0;
+      margin: 0.5rem 0;
+      padding: 0.6rem;
       border: none;
       border-radius: 8px;
-    }
-    .login-box button {
-      width: 100%;
-      padding: 10px;
-      background-color: #2563eb;
-      border: none;
+      background-color: #1c1c2c;
       color: white;
-      font-weight: bold;
-      border-radius: 8px;
+    }
+    button {
+      background-color: #3e8ed0;
       cursor: pointer;
     }
-    .password-toggle {
-      text-align: right;
-      font-size: 12px;
-      cursor: pointer;
-      color: #7dd3fc;
+    button:hover {
+      background-color: #5aa2e6;
     }
-    .fixed-buttons {
-      position: fixed;
-      top: 50%;
-      right: 10px;
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .export-btns {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transform: translateY(-50%);
-    }
-    .fixed-buttons a {
-      background-color: #10b981;
-      color: white;
-      padding: 10px;
-      border-radius: 8px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 14px;
+      gap: 1rem;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
+  <header>
+    <img src="company-logo.png" alt="Company Logo">
+    <h1>M.Hanif & Sons - Super Admin Panel</h1>
+    <img src="pakistan-logo.png" alt="Pakistan Logo">
+  </header>
+  <div class="container">
+    <div class="section">
+      <h2>Add New Section</h2>
+      <input type="text" id="sectionName" placeholder="Enter New Section Name">
+      <button onclick="addSection()">Add Section</button>
+      <div id="sectionsList"></div>
+    </div>
 
-<header>
-  <img src="pak_logo.png" alt="Pak Logo" />
-  <div class="company-name">M.Hanif & Sons</div>
-  <img src="company_logo.png" alt="Company Logo" />
-</header>
+    <div class="section">
+      <h2>Create Section Head Login</h2>
+      <input type="text" id="loginCNIC" placeholder="CNIC">
+      <input type="text" id="sectionForLogin" placeholder="Section Name">
+      <input type="password" id="sectionPassword" placeholder="Password">
+      <button onclick="createSectionLogin()">Create Login</button>
+    </div>
 
-<div class="login-container">
-  <!-- Super Admin Login -->
-  <div class="login-box">
-    <h2>Super Admin</h2>
-    <input type="text" placeholder="CNIC" id="admin-cnic" />
-    <input type="password" placeholder="Password" id="admin-pass" />
-    <div class="password-toggle" onclick="togglePassword('admin-pass')">👁 Show Password</div>
-    <button onclick="login('admin')">Login</button>
+    <div class="section">
+      <h2>Admin - Generate Letter</h2>
+      <select id="letterType">
+        <option value="Experience">Experience Letter</option>
+        <option value="Termination">Termination Letter</option>
+        <option value="NOC">NOC</option>
+      </select>
+      <input type="text" id="employeeName" placeholder="Employee Name">
+      <input type="text" id="designation" placeholder="Designation">
+      <button onclick="generateLetter()">Generate Letter</button>
+    </div>
+
+    <div class="section">
+      <h2>Export Data</h2>
+      <textarea id="exportData" placeholder="Enter or paste data here..."></textarea>
+      <div class="export-btns">
+        <button onclick="exportToExcel()">Export to Excel</button>
+        <button onclick="exportToPDF()">Export to PDF</button>
+      </div>
+    </div>
   </div>
 
-  <!-- Worker Login -->
-  <div class="login-box">
-    <h2>Worker</h2>
-    <input type="text" placeholder="CNIC" id="worker-cnic" />
-    <input type="password" placeholder="Password" id="worker-pass" />
-    <div class="password-toggle" onclick="togglePassword('worker-pass')">👁 Show Password</div>
-    <button onclick="login('worker')">Login</button>
-    <button style="margin-top: 5px; background-color:#facc15;">Create Account</button>
-  </div>
-
-  <!-- Section Head Login -->
-  <div class="login-box">
-    <h2>Section Head</h2>
-    <input type="text" placeholder="CNIC" id="head-cnic" />
-    <input type="password" placeholder="Password" id="head-pass" />
-    <div class="password-toggle" onclick="togglePassword('head-pass')">👁 Show Password</div>
-    <button onclick="login('head')">Login</button>
-  </div>
-</div>
-
-<!-- WhatsApp & Live Chat -->
-<div class="fixed-buttons">
-  <a href="https://wa.me/923398067880" target="_blank">💬 WhatsApp</a>
-  <a href="#">💻 Live Chat</a>
-</div>
-
-<script>
-  function togglePassword(id) {
-    const input = document.getElementById(id);
-    input.type = input.type === "password" ? "text" : "password";
-  }
-
-  function login(type) {
-    const validCNIC = "34501-8971113-7";
-    const validPassword = "Asad@2723";
-
-    let enteredCNIC = "";
-    let enteredPass = "";
-
-    if (type === "admin") {
-      enteredCNIC = document.getElementById("admin-cnic").value;
-      enteredPass = document.getElementById("admin-pass").value;
-    } else if (type === "worker") {
-      enteredCNIC = document.getElementById("worker-cnic").value;
-      enteredPass = document.getElementById("worker-pass").value;
-    } else if (type === "head") {
-      enteredCNIC = document.getElementById("head-cnic").value;
-      enteredPass = document.getElementById("head-pass").value;
+  <script>
+    function addSection() {
+      const name = document.getElementById('sectionName').value;
+      if (!name) return alert('Section name required!');
+      const div = document.createElement('div');
+      div.className = 'section';
+      div.innerHTML = `<h3>${name} Section</h3><input placeholder='CNIC'><input placeholder='Name'><input placeholder='Phone'><input placeholder='Other Info'>`;
+      document.getElementById('sectionsList').appendChild(div);
     }
 
-    if (enteredCNIC === validCNIC && enteredPass === validPassword && type === "admin") {
-      window.location.href = "super_admin_dashboard.html";
-    } else {
-      alert("CNIC یا Password غلط ہے۔");
+    function createSectionLogin() {
+      const cnic = document.getElementById('loginCNIC').value;
+      const section = document.getElementById('sectionForLogin').value;
+      const pass = document.getElementById('sectionPassword').value;
+      if (!cnic || !section || !pass) return alert('All fields required!');
+      alert(`Login Created for ${section} → CNIC: ${cnic}`);
     }
-  }
-</script>
 
+    function generateLetter() {
+      const type = document.getElementById('letterType').value;
+      const name = document.getElementById('employeeName').value;
+      const desg = document.getElementById('designation').value;
+      if (!name || !desg) return alert('Enter name and designation');
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.setFontSize(16);
+      doc.text(`${type} Letter`, 20, 20);
+      doc.setFontSize(12);
+      doc.text(`This is to certify that Mr./Ms. ${name}, working as ${desg}, is issued this ${type} letter from M.Hanif & Sons.`, 20, 40);
+      doc.text('Authorized Signature', 20, 80);
+      doc.text('Company Stamp', 20, 90);
+      doc.save(`${type}_Letter_${name}.pdf`);
+    }
+
+    function exportToExcel() {
+      const data = document.getElementById('exportData').value;
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.aoa_to_sheet([['Data'], [data]]);
+      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+      XLSX.writeFile(wb, 'data.xlsx');
+    }
+
+    function exportToPDF() {
+      const data = document.getElementById('exportData').value;
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.text(data, 10, 10);
+      doc.save('data.pdf');
+    }
+  </script>
 </body>
 </html>
