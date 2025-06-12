@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - MHS</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div style="max-width:400px;margin:auto;margin-top:50px;text-align:center;">
+        <h2>Login to M.Hanif & Sons</h2>
+        <form onsubmit="return checkLogin(event)">
+            <label>CNIC</label><br>
+            <input type="text" id="cnic" placeholder="e.g. 34501-8971113-7" required><br><br>
+            <label>Password</label><br>
+            <input type="password" id="password" placeholder="e.g. Asad@2723" required>
+            <button type="button" onclick="togglePassword()">Show</button><br><br>
+            <button type="submit">Login</button>
+        </form>
+        <p id="error" style="color:red;"></p>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+</html>
