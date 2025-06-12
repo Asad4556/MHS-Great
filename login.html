@@ -1,72 +1,24 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MHS Login</title>
-  <style>
-    body {
-      background-color: #121212;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .login-box {
-      background: #1f1f1f;
-      padding: 30px;
-      border-radius: 10px;
-      width: 300px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-    input {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #007bff;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    .error {
-      color: red;
-      margin-top: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Login - MHS</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <div class="login-box">
-    <h2>Login to M.Hanif & Sons</h2>
-    <input type="text" id="cnic" placeholder="CNIC e.g. 34501-8971113-7">
-    <input type="password" id="password" placeholder="Password e.g. Asad@2723">
-    <button onclick="login()">Login</button>
-    <div class="error" id="errorMsg"></div>
-  </div>
-
-  <script>
-    function login() {
-      const cnic = document.getElementById("cnic").value.trim();
-      const password = document.getElementById("password").value;
-
-      if (cnic === "34501-8971113-7" && password === "Asad@2723") {
-        window.location.href = "dashboard.html";
-      } else {
-        document.getElementById("errorMsg").innerText = "CNIC یا Password غلط ہے۔";
-      }
-    }
-  </script>
-
+    <div style="max-width:400px;margin:auto;margin-top:50px;text-align:center;">
+        <h2>Login to M.Hanif & Sons</h2>
+        <form onsubmit="return checkLogin(event)">
+            <label>CNIC</label><br>
+            <input type="text" id="cnic" placeholder="e.g. 34501-8971113-7" required><br><br>
+            <label>Password</label><br>
+            <input type="password" id="password" placeholder="e.g. Asad@2723" required>
+            <button type="button" onclick="togglePassword()">Show</button><br><br>
+            <button type="submit">Login</button>
+        </form>
+        <p id="error" style="color:red;"></p>
+    </div>
+    <script src="js/login.js"></script>
 </body>
 </html>
