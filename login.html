@@ -1,88 +1,98 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>M.Hanif & Sons | Login</title>
+  <title>Login - M.Hanif & Sons</title>
   <style>
     body {
-      background: #121212;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
       margin: 0;
-    }
-    h2 {
-      margin-bottom: 10px;
-      color: #00d1b2;
-    }
-    .login-container {
+      padding: 0;
+      background: #0d1117;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
       display: flex;
-      gap: 40px;
-      margin-top: 20px;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .wrapper {
+      display: flex;
+      gap: 60px;
+      background: #161b22;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(0,255,255,0.1);
     }
     .login-box {
-      background: #1f1f1f;
-      padding: 20px 30px;
+      background: #1f2937;
+      padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,255,255,0.2);
-      width: 280px;
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      color: #00d1b2;
+      margin-bottom: 20px;
     }
     label {
+      font-size: 14px;
       display: block;
-      margin-bottom: 6px;
+      margin: 10px 0 5px;
     }
     input {
       width: 100%;
       padding: 10px;
-      margin-bottom: 10px;
       border: none;
-      border-radius: 6px;
-      background: #333;
+      background: #111827;
       color: white;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .password-wrapper {
+      position: relative;
     }
     .toggle-password {
-      position: relative;
-      float: right;
-      margin-top: -34px;
-      margin-right: 10px;
+      position: absolute;
+      right: 10px;
+      top: 12px;
       cursor: pointer;
-      color: #ccc;
+      color: #888;
     }
     button {
       width: 100%;
       padding: 10px;
-      background: #00d1b2;
+      background-color: #00d1b2;
       border: none;
       color: white;
-      border-radius: 6px;
+      font-size: 16px;
+      border-radius: 8px;
       cursor: pointer;
     }
     .create-link {
-      color: #00d1b2;
+      display: block;
       text-align: center;
       margin-top: 10px;
-      display: block;
+      color: #00d1b2;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
 
-  <h2>Super Admin Login</h2>
-  <div class="login-container">
+  <div class="wrapper">
     <!-- Super Admin Login -->
     <div class="login-box">
+      <h2>Super Admin</h2>
       <form action="dashboard.html" method="POST">
-        <label for="admin-cnic">CNIC:</label>
+        <label for="admin-cnic">CNIC</label>
         <input type="text" id="admin-cnic" name="cnic" placeholder="e.g. 34501-8971113-7" required />
 
-        <label for="admin-password">Password:</label>
-        <input type="password" id="admin-password" name="password" placeholder="••••••••" required />
-        <span class="toggle-password" onclick="togglePassword('admin-password')">👁️</span>
+        <label for="admin-password">Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="admin-password" name="password" placeholder="Enter password" required />
+          <span class="toggle-password" onclick="togglePassword('admin-password')">👁️</span>
+        </div>
 
         <button type="submit">Login</button>
       </form>
@@ -90,13 +100,16 @@
 
     <!-- Worker Login -->
     <div class="login-box">
+      <h2>Worker</h2>
       <form action="worker-dashboard.html" method="POST">
-        <label for="worker-cnic">CNIC:</label>
+        <label for="worker-cnic">CNIC</label>
         <input type="text" id="worker-cnic" name="cnic" placeholder="e.g. 35201-XXXXXXX-X" required />
 
-        <label for="worker-password">Password:</label>
-        <input type="password" id="worker-password" name="password" placeholder="••••••••" required />
-        <span class="toggle-password" onclick="togglePassword('worker-password')">👁️</span>
+        <label for="worker-password">Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="worker-password" name="password" placeholder="Enter password" required />
+          <span class="toggle-password" onclick="togglePassword('worker-password')">👁️</span>
+        </div>
 
         <button type="submit">Login</button>
         <a href="create-worker.html" class="create-link">Create Worker Account</a>
