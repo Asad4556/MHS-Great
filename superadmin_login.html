@@ -1,95 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Super Admin Dashboard - M.Hanif & Sons</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <style>
-    body {
-      background-color: #121212;
-      color: #ffffff;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .card {
-      background-color: #1f1f1f;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
-    .btn-primary {
-      background-color: #007bff;
-      border: none;
-    }
-    .btn-primary:hover {
-      background-color: #0056b3;
-    }
-    .section-card {
-      transition: transform 0.3s ease-in-out;
-    }
-    .section-card:hover {
-      transform: scale(1.05);
-    }
-    .top-bar {
-      background-color: #222;
-      padding: 15px;
-      text-align: center;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border-bottom: 2px solid #333;
-    }
-  </style>
-</head>
-<body>
-  <div class="top-bar">
-    M.Hanif & Sons - Super Admin Dashboard
-  </div>
+<script>
+  function login() {
+    var cnic = document.getElementById("cnic").value;
+    var password = document.getElementById("password").value;
 
-  <div class="container mt-5">
-    <div class="row justify-content-center g-4">
-      <!-- Section Cards -->
-      <div class="col-md-4">
-        <div class="card section-card text-center p-4">
-          <h4>HR</h4>
-          <a href="#" class="btn btn-primary mt-3">Open HR Section</a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card section-card text-center p-4">
-          <h4>Finance</h4>
-          <a href="#" class="btn btn-primary mt-3">Open Finance Section</a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card section-card text-center p-4">
-          <h4>Admin</h4>
-          <a href="#" class="btn btn-primary mt-3">Open Admin Section</a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card section-card text-center p-4">
-          <h4>Logistic</h4>
-          <a href="#" class="btn btn-primary mt-3">Open Logistic Section</a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card section-card text-center p-4">
-          <h4>Reception</h4>
-          <a href="#" class="btn btn-primary mt-3">Open Reception Section</a>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card section-card text-center p-4">
-          <h4>Add New Section</h4>
-          <a href="#" class="btn btn-warning mt-3">+ Add Section</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Change Password Option -->
-    <div class="text-center mt-5">
-      <a href="#" class="btn btn-outline-light">Change Password</a>
-    </div>
-  </div>
-
-</body>
-</html>
+    if (cnic === "34501-8971113-7" && password === "Asad@2723") {
+      window.location.href = "super_admin_dashboard.html";
+    } else {
+      alert("CNIC یا Password غلط ہے۔");
+    }
+  }
+</script>
