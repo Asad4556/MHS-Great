@@ -1,87 +1,57 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  background: #121212;
-  color: white;
+body.dark-theme {
+    background-color: #121212;
+    color: white;
+    font-family: Arial, sans-serif;
 }
-
-.top-bar {
-  background-color: #1a1a1a;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #1f1f1f;
 }
-
-.logo-left, .logo-right {
-  height: 50px;
+.logo-left img, .logo-right img {
+    width: 60px;
 }
-
-.navbar {
-  background-color: #2c2c2c;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 10px;
+nav {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
 }
-
-.navbar a {
-  color: #00bcd4;
-  text-decoration: none;
-  font-weight: bold;
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
 }
-
-.login-section {
-  display: flex;
-  justify-content: center;
-  padding: 40px;
+footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
 }
-
-.login-form {
-  background-color: #1e1e1e;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
-  width: 300px;
-  display: flex;
-  flex-direction: column;
+.login-container {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    text-align: center;
 }
-
-.login-form input {
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 5px;
+.password-wrapper {
+    position: relative;
 }
-
-.login-form button {
-  padding: 10px;
-  background-color: #00bcd4;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    cursor: pointer;
 }
-
-.error-msg {
-  color: red;
-  margin-top: 10px;
-}
-
-.chat-buttons {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.whatsapp-btn, .livechat-btn {
-  background-color: #25D366;
-  color: white;
-  padding: 10px;
-  border-radius: 50px;
-  text-align: center;
-  text-decoration: none;
+.sections a {
+    display: block;
+    margin: 10px;
+    padding: 10px;
+    background: #2d2d2d;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
 }

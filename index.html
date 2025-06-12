@@ -1,81 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>M.Hanif & Sons - Login</title>
-  <style>
-    body {
-      background-color: #1e1e2f;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .login-container {
-      background-color: #2a2a40;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
-    }
-    input, button {
-      padding: 10px;
-      margin: 10px 0;
-      width: 100%;
-      border-radius: 5px;
-      border: none;
-    }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      cursor: pointer;
-    }
-    .toggle-password {
-      float: right;
-      margin-right: 10px;
-      margin-top: -35px;
-      position: relative;
-      z-index: 2;
-      cursor: pointer;
-      color: #ccc;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>MHS - Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div class="login-container">
-    <h2>Super Admin Login</h2>
-    <input type="text" id="cnic" placeholder="CNIC (e.g. 34501-8971113-7)" autocomplete="off">
-    <div style="position: relative;">
-      <input type="password" id="password" placeholder="Password (e.g. Asad@2723)">
-      <span class="toggle-password" onclick="togglePassword()">👁</span>
-    </div>
-    <button onclick="login()">Login</button>
-  </div>
-
-  <script>
-    function togglePassword() {
-      var password = document.getElementById("password");
-      if (password.type === "password") {
-        password.type = "text";
-      } else {
-        password.type = "password";
-      }
-    }
-
-    function login() {
-      var cnic = document.getElementById("cnic").value;
-      var password = document.getElementById("password").value;
-
-      if (cnic === "34501-8971113-7" && password === "Asad@2723") {
-        alert("Login successful");
-        window.location.href = "super_admin_dashboard.html";
-      } else {
-        alert("CNIC یا Password غلط ہے۔");
-      }
-    }
-  </script>
+<body class="dark-theme">
+    <header>
+        <div class="logo-left"><img src="pakistan-logo.png" alt="Pak Logo"></div>
+        <div class="title">M.Hanif & Sons</div>
+        <div class="logo-right"><img src="company-logo.png" alt="Company Logo"></div>
+    </header>
+    <nav>
+        <a href="superadmin_login.html">Super Admin</a>
+        <a href="worker_login.html">Worker</a>
+        <a href="sectionhead_login.html">Section Head</a>
+        <a href="#">Careers</a>
+        <a href="#">News</a>
+        <a href="#">Media</a>
+    </nav>
+    <footer>
+        <a class="whatsapp" href="https://wa.me/03398067880" target="_blank">WhatsApp Chat</a>
+        <a class="livechat" href="#">Live Chat</a>
+    </footer>
 </body>
 </html>
