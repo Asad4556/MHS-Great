@@ -1,0 +1,94 @@
+<!-- File Name: superadmin_login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>M.Hanif & Sons - Login</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .login-container {
+      margin-top: 80px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 400px;
+    }
+    h2 {
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+    }
+    .password-toggle {
+      position: relative;
+    }
+    .password-toggle input {
+      padding-right: 50px;
+    }
+    .toggle-btn {
+      position: absolute;
+      top: 12px;
+      right: 10px;
+      cursor: pointer;
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Super Admin Login</h2>
+    <form id="superAdminLoginForm">
+      <input type="text" id="superAdminCnic" placeholder="CNIC" required>
+      <div class="password-toggle">
+        <input type="password" id="superAdminPassword" placeholder="Password" required>
+        <span class="toggle-btn" onclick="togglePassword('superAdminPassword')">👁️</span>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <div class="login-container">
+    <h2>Worker Login</h2>
+    <form id="workerLoginForm">
+      <input type="text" id="workerCnic" placeholder="CNIC" required>
+      <div class="password-toggle">
+        <input type="password" id="workerPassword" placeholder="Password" required>
+        <span class="toggle-btn" onclick="togglePassword('workerPassword')">👁️</span>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <p style="text-align:center;">
+      <a href="#">Create Account</a>
+    </p>
+  </div>
+
+  <script>
+    function togglePassword(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    document.getElementById("superAdminLoginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const cnic = document.getElementById("superAdminCnic").value;
+      const pass = document.getElementById("superAdminPassword").value;
+      if (cnic === "34501-8971113-7" && pass === "Asad@2723") {
+        window.location.href = "dashboard.html";
+      } else {
+        alert("CNIC یا Password غلط ہے۔");
+      }
+    });
+  </script>
+
+</body>
+</html>
