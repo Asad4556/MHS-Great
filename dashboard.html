@@ -1,92 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>M.Hanif & Sons - Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>MHS Login</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
       background-color: #121212;
       color: white;
-    }
-    header {
-      background-color: #1f1f1f;
-      padding: 20px;
-      text-align: center;
-      position: relative;
-    }
-    header img {
-      position: absolute;
-      top: 10px;
-      left: 20px;
-      width: 60px;
-      height: 60px;
-    }
-    header h1 {
-      font-size: 28px;
-      color: #00bcd4;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       margin: 0;
     }
-    header h2 {
-      font-size: 16px;
-      color: #ffffffaa;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      padding: 40px;
-    }
-    .card {
-      background: #1e1e1e;
-      padding: 20px;
-      border-radius: 15px;
+    .login-box {
+      background: #1f1f1f;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
       text-align: center;
-      transition: 0.3s;
-      box-shadow: 0 0 10px #00000088;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 20px #00bcd4aa;
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
     }
-    .card a {
-      text-decoration: none;
-      color: #00e5ff;
-      font-size: 20px;
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
     }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #1f1f1f;
-      color: #888;
-      font-size: 14px;
+    .error {
+      color: red;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <img src="logo.png" alt="Company Logo" />
-  <h1>M. Hanif & Sons</h1>
-  <h2>Pakistan</h2>
-</header>
+  <div class="login-box">
+    <h2>Login to M.Hanif & Sons</h2>
+    <input type="text" id="cnic" placeholder="CNIC e.g. 34501-8971113-7">
+    <input type="password" id="password" placeholder="Password e.g. Asad@2723">
+    <button onclick="login()">Login</button>
+    <div class="error" id="errorMsg"></div>
+  </div>
 
-<main class="grid">
-  <div class="card"><a href="hr.html">HR Section</a></div>
-  <div class="card"><a href="finance.html">Finance Section</a></div>
-  <div class="card"><a href="store.html">Store Section</a></div>
-  <div class="card"><a href="reception.html">Reception Section</a></div>
-  <div class="card"><a href="admin.html">Admin Section</a></div>
-</main>
+  <script>
+    function login() {
+      const cnic = document.getElementById("cnic").value.trim();
+      const password = document.getElementById("password").value;
 
-<footer>
-  © 2025 M.Hanif & Sons | All rights reserved.
-</footer>
+      if (cnic === "34501-8971113-7" && password === "Asad@2723") {
+        window.location.href = "dashboard.html";
+      } else {
+        document.getElementById("errorMsg").innerText = "CNIC یا Password غلط ہے۔";
+      }
+    }
+  </script>
 
 </body>
 </html>
-
-
