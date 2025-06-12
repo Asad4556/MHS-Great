@@ -3,58 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>M.Hanif & Sons - Login</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>M.Hanif & Sons - Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background-color: #1e1e1e;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    .center-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background-color: #242424;
+      padding: 12px 0;
+      font-size: 16px;
+    }
+
+    nav a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #4fc3f7;
+    }
+
+    .main-content {
+      padding: 40px;
+      text-align: center;
+    }
+
+    .buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .buttons a {
+      background-color: #25d366;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 0 10px #25d366;
+    }
+
+    .live-chat {
+      background-color: #2196f3;
+      box-shadow: 0 0 10px #2196f3;
+    }
+  </style>
 </head>
 <body>
-  <header class="top-bar">
-    <img src="pakistan-logo.png" alt="Pakistan Logo" class="logo-left"/>
-    <h1>M.Hanif & Sons</h1>
-    <img src="company-logo.png" alt="Company Logo" class="logo-right"/>
+
+  <header>
+    <img src="pakistan-logo.png" alt="Pakistan Logo" />
+    <div class="center-title">M.Hanif & Sons</div>
+    <img src="company-logo.png" alt="Company Logo" />
   </header>
 
-  <nav class="navbar">
-    <a href="#">Login</a>
+  <nav>
+    <a href="login.html">Login</a>
     <a href="#">Careers</a>
     <a href="#">News</a>
     <a href="#">Media</a>
   </nav>
 
-  <main class="login-section">
-    <form class="login-form" onsubmit="return validateLogin(event)">
-      <label for="cnic">CNIC:</label>
-      <input type="text" id="cnic" placeholder="e.g. 34501-8971113-7" required />
-
-      <label for="password">Password:</label>
-      <input type="password" id="password" placeholder="e.g. Asad@2723" required />
-      <button type="button" onclick="togglePassword()">👁 Show</button>
-
-      <button type="submit">Login</button>
-      <p id="error-msg" class="error-msg" style="display:none;">CNIC یا Password غلط ہے۔</p>
-    </form>
-  </main>
-
-  <div class="chat-buttons">
-    <a href="https://wa.me/923398067880" target="_blank" class="whatsapp-btn">WhatsApp Chat</a>
-    <a href="#" class="livechat-btn">Live Chat</a>
+  <div class="main-content">
+    <h1>Welcome to M.Hanif & Sons</h1>
+    <p>Serving quality & excellence. Access all company information from one place.</p>
   </div>
 
-  <script>
-    function togglePassword() {
-      const pass = document.getElementById('password');
-      pass.type = pass.type === 'password' ? 'text' : 'password';
-    }
+  <div class="buttons">
+    <a href="https://wa.me/923398067880" target="_blank">WhatsApp Chat</a>
+    <a href="#" class="live-chat">Live Chat</a>
+  </div>
 
-    function validateLogin(event) {
-      event.preventDefault();
-      const cnic = document.getElementById('cnic').value;
-      const password = document.getElementById('password').value;
-      if (cnic === "34501-8971113-7" && password === "Asad@2723") {
-        window.location.href = "dashboard.html";
-      } else {
-        document.getElementById("error-msg").style.display = "block";
-      }
-    }
-  </script>
 </body>
 </html>
