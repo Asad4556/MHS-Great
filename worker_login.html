@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Worker Login | MHS</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background-color: #1e1e1e;
+      padding: 30px;
+      border-radius: 15px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 8px;
+      background-color: #00b894;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    .toggle-password {
+      position: relative;
+      margin-top: -32px;
+      margin-right: 10px;
+      float: right;
+      cursor: pointer;
+      color: #ccc;
+    }
+    .link {
+      color: #00cec9;
+      cursor: pointer;
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Worker Login</h2>
+    <form id="workerLoginForm" onsubmit="loginWorker(event)">
+      <input type="text" id="cnic" placeholder="Enter CNIC" required />
+      <input type="password" id="password" placeholder="Enter Password" required />
+      <span class="toggle-password" onclick="togglePassword()">👁</span>
+      <button type="submit">Login</button>
+    </form>
+    <span class="link" onclick="createAccount()">Create Account</span>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const pwd = document.getElementById("password");
+      pwd.type = pwd.type === "password" ? "text" : "password";
+    }
+
+    function loginWorker(event) {
+      event.preventDefault();
+      const cnic = document.getElementById("cnic").value;
+      const password = document.getElementById("password").value;
+
+      // Replace with actual authentication logic
+      if (cnic === "35202-1234567-8" && password === "worker@123") {
+        alert("Login successful!");
+        window.location.href = "worker_dashboard.html";
+      } else {
+        alert("Invalid CNIC or Password.");
+      }
+    }
+
+    function createAccount() {
+      const cnic = document.getElementById("cnic").value;
+      if (!cnic) {
+        alert("Please enter CNIC first.");
+        return;
+      }
+
+      // Fake HR data for demo:
+      const hrCNICList = ["35202-1234567-8", "34501-4567890-1", "33100-7891234-2"];
+
+      if (hrCNICList.includes(cnic)) {
+        alert("HR record found! Redirecting to account creation page...");
+        window.location.href = "create_worker_account.html";
+      } else {
+        alert("CNIC not found in HR records. Please contact HR.");
+      }
+    }
+  </script>
+
+</body>
+</html>
